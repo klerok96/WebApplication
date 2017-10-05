@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using Hashing;
 
 namespace WebApplication
 {
@@ -20,20 +21,36 @@ namespace WebApplication
             string connectionString = @"server=LAPTOP-B6SOJQMR;Initial Catalog=Cars;Integrated Security=True;Persist Security Info=False;";
 
             string login = Login.Text;
-            string pass = Password.Text;
+            string pass = Hash.GetHashString(Password.Text);
 
-            string sqlExpressionData = $"SELECT * FROM [Cars].[dbo].[Users] WHERE Login = '{login}'";
+            string sqlExpressionData = $"SELECT AccessLevel FROM [Cars].[dbo].[Users] WHERE Login = '{login}' AND Password = '{pass}'";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
                 SqlCommand command = new SqlCommand(sqlExpressionData, connection);
-                SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.HasRows)
-                    Response.Write("aa");
-                // TextBox1.Text = count.ToString();
+                try
+                {
+                    int access = (int)command.ExecuteScalar();
+
+                    // Создать объект cookie-набора
+                    HttpCookie cookie = new HttpCookie("Cookie");
+
+                    // Установить значения в нем
+                    cookie["Login"] = login;
+                    cookie["Access"] = access.ToString();
+
+                    //Добавить куки в ответ
+                    Response.Cookies.Add(cookie);
+
+                    Enter.PostBackUrl = "~/Main.aspx";
+                }
+                    catch (Exception ex)
+                    {
+                        Response.Write("Неверный пароль или логин");
+                    }
             }
         }
     }
