@@ -33,7 +33,7 @@ namespace WebApplication
 
                 try
                 {
-                    int access = (int)command.ExecuteScalar();
+                    string access = (string)command.ExecuteScalar();
 
                     // Создать объект cookie-набора
                     HttpCookie cookie = new HttpCookie("Cookie");
@@ -47,10 +47,10 @@ namespace WebApplication
 
                     Enter.PostBackUrl = "~/Main.aspx";
                 }
-                    catch (Exception ex)
-                    {
-                        Response.Write("Неверный пароль или логин");
-                    }
+                catch (Exception ex)
+                {
+                    Response.Write("Неверный пароль или логин");
+                }
             }
         }
     }

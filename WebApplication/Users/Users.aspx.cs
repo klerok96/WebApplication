@@ -10,9 +10,17 @@ namespace WebApplication.Users
 {
     public partial class Users : System.Web.UI.Page
     {
+        string _connectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string connectionString = @"server=LAPTOP-B6SOJQMR;Initial Catalog=Cars;Integrated Security=True;Persist Security Info=False;";
+            _connectionString = @"server=LAPTOP-B6SOJQMR;Initial Catalog=Cars;Integrated Security=True;Persist Security Info=False;";
+
+            HttpCookie cookieReq = Request.Cookies["Cookie"];
+
+            if (cookieReq != null)
+                Label2.Text= cookieReq["Login"];
+
 
             //string sqlExpressionData = $"SELECT UserID, Login, AccessLevel FROM [Cars].[dbo].[Users]";
 
@@ -27,6 +35,31 @@ namespace WebApplication.Users
             //    GridView1.DataBind();
 
             //}
+        }
+
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = GridView1.Rows[e.RowIndex];
+            String newLogin = ((TextBox)(row.Cells[2].Controls[0])).Text;
+
+            string sqlExpression = $"SELECT AccessLevel FROM [Cars].[dbo].[Users] WHERE LOWER(Login) = '{newLogin}'";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+
+                try
+                {
+                    string access = (string)command.ExecuteScalar();
+                    Response.Write("Такой логин уже есть!");
+                    e.Cancel = true;
+                }
+                catch (Exception ex)
+                {
+                }
+            }
         }
     }
 }

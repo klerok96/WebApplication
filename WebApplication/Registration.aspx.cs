@@ -31,7 +31,7 @@ namespace WebApplication
                 SqlCommand command = new SqlCommand(sqlExpression, connection);
                 command.Parameters.AddWithValue("@login", login);
                 command.Parameters.AddWithValue("@pass", pass);
-                command.Parameters.AddWithValue("@access", "0");
+                command.Parameters.AddWithValue("@access", "normal");
 
                 command.ExecuteNonQuery();
             }
