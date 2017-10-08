@@ -18,8 +18,8 @@ namespace WebApplication.Users
 
             HttpCookie cookieReq = Request.Cookies["Cookie"];
 
-            if (cookieReq != null)
-                Label2.Text= cookieReq["Login"];
+            //if (cookieReq != null)
+            //    Label2.Text= cookieReq["Login"];
 
 
             //string sqlExpressionData = $"SELECT UserID, Login, AccessLevel FROM [Cars].[dbo].[Users]";

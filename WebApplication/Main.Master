@@ -11,14 +11,19 @@
 <body>
     <form id="form1" runat="server">
         <div>
-
+            <asp:Label ID="LabelLogin" runat="server" Text=""></asp:Label>
+            <br />
+            <asp:Button ID="ButtonEntEx" runat="server" Text="Выйти" OnClick="ButtonEntEx_Click" />
+            <br />
+            <br />
             <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
                 <Items>
                     <asp:MenuItem NavigateUrl="~/Main.aspx" Text="Главная" Value="Главная"></asp:MenuItem>
-                    <asp:MenuItem Text="БД" Value="БД" NavigateUrl="~/Users/Users.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="Пользователи" Value="Пользователи" NavigateUrl="~/DBView/Users.aspx"></asp:MenuItem>
                 </Items>
             </asp:Menu>
-
+            <br />
+            <hr />
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>

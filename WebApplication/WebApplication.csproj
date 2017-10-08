@@ -79,7 +79,7 @@
   <ItemGroup>
     <Content Include="Authorization.aspx" />
     <Content Include="Registration.aspx" />
-    <Content Include="Users\Users.aspx" />
+    <Content Include="DBView\Users.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -120,11 +120,11 @@
     <Compile Include="Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Users\Users.aspx.cs">
+    <Compile Include="DBView\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Users\Users.aspx.designer.cs">
+    <Compile Include="DBView\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

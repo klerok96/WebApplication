@@ -11,7 +11,25 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((string)Session["Login"] != null)
+            {
+                LabelLogin.Text = "Логин: " + (string)Session["Login"];
 
+                if ((string)Session["Access"] == "normal")
+                {
+                    Menu1.Items.Remove(Menu1.FindItem("Пользователи"));
+                }
+            }
+            else
+            {
+                Menu1.Items.Clear();
+            }
+        }
+
+        protected void ButtonEntEx_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Authorization.aspx");
         }
     }
 }

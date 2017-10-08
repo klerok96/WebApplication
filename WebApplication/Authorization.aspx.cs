@@ -35,15 +35,8 @@ namespace WebApplication
                 {
                     string access = (string)command.ExecuteScalar();
 
-                    // Создать объект cookie-набора
-                    HttpCookie cookie = new HttpCookie("Cookie");
-
-                    // Установить значения в нем
-                    cookie["Login"] = login;
-                    cookie["Access"] = access.ToString();
-
-                    //Добавить куки в ответ
-                    Response.Cookies.Add(cookie);
+                    Session["Login"] = login;
+                    Session["Access"] = access;
 
                     Enter.PostBackUrl = "~/Main.aspx";
                 }
