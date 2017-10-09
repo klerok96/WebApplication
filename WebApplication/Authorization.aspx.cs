@@ -38,7 +38,7 @@ namespace WebApplication
                     Session["Login"] = login;
                     Session["Access"] = access;
 
-                    Enter.PostBackUrl = "~/Main.aspx";
+                    Response.Redirect("~/Main.aspx");
                 }
                 catch (Exception ex)
                 {

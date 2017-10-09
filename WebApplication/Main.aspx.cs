@@ -11,10 +11,6 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie cookieReq = Request.Cookies["Cookie"];
-
-            if (cookieReq != null)
-                Response.Write(cookieReq["Login"]);
         }
     }
 }

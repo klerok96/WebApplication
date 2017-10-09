@@ -17,11 +17,13 @@ namespace WebApplication
 
                 if ((string)Session["Access"] == "normal")
                 {
-                    Menu1.Items.Remove(Menu1.FindItem("Пользователи"));
+                    if (Menu1.FindItem("Пользователи") != null)
+                        Menu1.Items.Remove(Menu1.FindItem("Пользователи"));
                 }
             }
             else
             {
+                ButtonEntEx.Visible = false;
                 Menu1.Items.Clear();
             }
         }

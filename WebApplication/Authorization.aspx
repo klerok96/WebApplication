@@ -16,7 +16,7 @@
             <asp:TextBox ID="Login" runat="server"></asp:TextBox>
             <br />
             <br />
-            Пароль <asp:TextBox ID="Password" runat="server"></asp:TextBox>
+            Пароль <asp:TextBox ID="Password" TextMode="Password" runat="server"></asp:TextBox>
             <br />
             <br />
             <asp:Button ID="Enter" runat="server" Text="Вход" OnClick="Enter_Click" />
