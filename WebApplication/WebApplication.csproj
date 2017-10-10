@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DBView\Cars.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="Main.Master" />
     <None Include="packages.config" />
@@ -90,6 +91,13 @@
     </Compile>
     <Compile Include="Authorization.aspx.designer.cs">
       <DependentUpon>Authorization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DBView\Cars.aspx.cs">
+      <DependentUpon>Cars.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DBView\Cars.aspx.designer.cs">
+      <DependentUpon>Cars.aspx</DependentUpon>
     </Compile>
     <Compile Include="Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>

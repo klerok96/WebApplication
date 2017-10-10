@@ -18,7 +18,7 @@ namespace WebApplication
 
         protected void Save_Click(object sender, EventArgs e)
         {
-            string connectionString = @"server=LAPTOP-B6SOJQMR;Initial Catalog=Cars;Integrated Security=True;Persist Security Info=False;";
+            string connectionString = @"server=LAPTOP-B6SOJQMR\SQLEXPRESS;Initial Catalog=Cars;Integrated Security=True;Persist Security Info=False;";
             string sqlExpression = "INSERT [dbo].[Users] VALUES (@login, @pass, @access)";
 
             string login = Login.Text;

@@ -15,26 +15,6 @@ namespace WebApplication.Users
         protected void Page_Load(object sender, EventArgs e)
         {
             _connectionString = @"server=LAPTOP-B6SOJQMR;Initial Catalog=Cars;Integrated Security=True;Persist Security Info=False;";
-
-            HttpCookie cookieReq = Request.Cookies["Cookie"];
-
-            //if (cookieReq != null)
-            //    Label2.Text= cookieReq["Login"];
-
-
-            //string sqlExpressionData = $"SELECT UserID, Login, AccessLevel FROM [Cars].[dbo].[Users]";
-
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //    connection.Open();
-
-            //    SqlCommand command = new SqlCommand(sqlExpressionData, connection);
-            //    SqlDataReader dr = command.ExecuteReader();
-
-            //    GridView1.DataSource = dr;
-            //    GridView1.DataBind();
-
-            //}
         }
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)

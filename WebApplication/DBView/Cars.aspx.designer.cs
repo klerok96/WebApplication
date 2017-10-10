@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication.Users {
+namespace WebApplication.DBView {
     
     
-    public partial class Users {
+    public partial class Cars {
         
         /// <summary>
         /// GridView1 control.
@@ -22,12 +22,12 @@ namespace WebApplication.Users {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// SqlDataSourceUsers control.
+        /// SqlDataSourceCars control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUsers;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCars;
     }
 }
