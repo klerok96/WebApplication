@@ -20,9 +20,9 @@ namespace WebApplication.Users
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             GridViewRow row = GridView1.Rows[e.RowIndex];
-            String newLogin = ((TextBox)(row.Cells[2].Controls[0])).Text;
+            String newLogin = ((TextBox)(row.Cells[1].Controls[0])).Text;
 
-            string sqlExpression = $"SELECT AccessLevel FROM [Cars].[dbo].[Users] WHERE LOWER(Login) = '{newLogin}'";
+            string sqlExpression = $"SELECT Login FROM [Cars].[dbo].[Users] WHERE LOWER(Login) = '{newLogin}'";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -30,14 +30,11 @@ namespace WebApplication.Users
 
                 SqlCommand command = new SqlCommand(sqlExpression, connection);
 
-                try
-                {
-                    string access = (string)command.ExecuteScalar();
+                string access = (string)command.ExecuteScalar();
+                if(access != null)
+                { 
                     Response.Write("Такой логин уже есть!");
                     e.Cancel = true;
-                }
-                catch (Exception ex)
-                {
                 }
             }
         }

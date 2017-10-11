@@ -17,7 +17,7 @@
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSourceColor" DataTextField="ColorName" DataValueField="ColorID" SelectedValue='<%# Bind("ColorID") %>'>
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSourceColor" runat="server" ConnectionString="<%$ ConnectionStrings:CarsConnectionStringCars %>" SelectCommand="SELECT * FROM [Color]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSourceColor" runat="server" ConnectionString="<%$ ConnectionStrings:CarsConnectionString %>" SelectCommand="SELECT * FROM [Color]"></asp:SqlDataSource>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("ColorName") %>'></asp:Label>
@@ -25,9 +25,9 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="DiskCarID" SortExpression="DiskCarID">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSourceDiskCar" DataTextField="DiskCarName" DataValueField="DiskCarID" SelectedValue='<%# Bind("DiskCarID") %>'>
+                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSourcDiskCar" DataTextField="DiskCarName" DataValueField="DiskCarID" SelectedValue='<%# Bind("DiskCarID") %>'>
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSourceDiskCar" runat="server" ConnectionString="<%$ ConnectionStrings:CarsConnectionStringCars %>" SelectCommand="SELECT * FROM [DiskCar]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSourcDiskCar" runat="server" ConnectionString="<%$ ConnectionStrings:CarsConnectionString %>" SelectCommand="SELECT * FROM [DiskCar]"></asp:SqlDataSource>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("DiskCarName") %>'></asp:Label>
@@ -43,7 +43,7 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSourceCars" runat="server" ConnectionString="<%$ ConnectionStrings:CarsConnectionStringCars %>" DeleteCommand="DELETE FROM [Car] WHERE [CarID] = @CarID" InsertCommand="INSERT INTO [Car] ([CarName], [Cost], [Power], [Consumption], [ColorID], [DiskCarID]) VALUES (@CarName, @Cost, @Power, @Consumption, @ColorID, @DiskCarID)" SelectCommand="SELECT Car.CarID, Car.CarName, Car.Cost, Car.Power, Car.Consumption, Car.ColorID, Car.DiskCarID, DiskCar.DiskCarName, Color.ColorName FROM Car INNER JOIN Color ON Car.ColorID = Color.ColorID INNER JOIN DiskCar ON Car.DiskCarID = DiskCar.DiskCarID" UpdateCommand="UPDATE [Car] SET [CarName] = @CarName, [Cost] = @Cost, [Power] = @Power, [Consumption] = @Consumption, [ColorID] = @ColorID, [DiskCarID] = @DiskCarID WHERE [CarID] = @CarID">
+    <asp:SqlDataSource ID="SqlDataSourceCars" runat="server" ConnectionString="<%$ ConnectionStrings:CarsConnectionString %>" DeleteCommand="DELETE FROM [Car] WHERE [CarID] = @CarID" InsertCommand="INSERT INTO [Car] ([CarName], [Cost], [Power], [Consumption], [ColorID], [DiskCarID]) VALUES (@CarName, @Cost, @Power, @Consumption, @ColorID, @DiskCarID)" SelectCommand="SELECT Car.CarID, Car.CarName, Car.Cost, Car.Power, Car.Consumption, Car.ColorID, Car.DiskCarID, DiskCar.DiskCarName, Color.ColorName FROM Car INNER JOIN Color ON Car.ColorID = Color.ColorID INNER JOIN DiskCar ON Car.DiskCarID = DiskCar.DiskCarID" UpdateCommand="UPDATE [Car] SET [CarName] = @CarName, [Cost] = @Cost, [Power] = @Power, [Consumption] = @Consumption, [ColorID] = @ColorID, [DiskCarID] = @DiskCarID WHERE [CarID] = @CarID">
         <DeleteParameters>
             <asp:Parameter Name="CarID" Type="Int32" />
         </DeleteParameters>
