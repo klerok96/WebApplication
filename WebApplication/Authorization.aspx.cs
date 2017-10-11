@@ -31,16 +31,15 @@ namespace WebApplication
 
                 SqlCommand command = new SqlCommand(sqlExpressionData, connection);
 
-                try
+                string access = (string)command.ExecuteScalar();
+                if(access != null)
                 {
-                    string access = (string)command.ExecuteScalar();
-
                     Session["Login"] = login;
                     Session["Access"] = access;
 
                     Response.Redirect("~/Main.aspx");
                 }
-                catch (Exception ex)
+                else
                 {
                     Response.Write("Неверный пароль или логин");
                 }

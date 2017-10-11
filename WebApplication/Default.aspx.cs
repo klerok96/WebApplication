@@ -11,7 +11,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            SqlDataSource1.SelectCommand = "SELECT * FROM [Users] where Login = 'admin'";
         }
     }
 }

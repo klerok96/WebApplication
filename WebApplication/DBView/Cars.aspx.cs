@@ -14,7 +14,49 @@ namespace WebApplication.DBView
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //_connectionString = @"server=LAPTOP-B6SOJQMR;Initial Catalog=Cars;Integrated Security=True;Persist Security Info=False;";
+            _connectionString = @"server=LAPTOP-B6SOJQMR;Initial Catalog=Cars;Integrated Security=True;Persist Security Info=False;";
+
+            if ((string)Session["Login"] != null)
+            {
+                if ((string)Session["Access"] == "normal")
+                {
+                    SqlDataSourceCars.SelectCommand = 
+                        $"SELECT Car.CarID, Car.CarName, Car.Cost, Car.Power, Car.Consumption, Car.ColorID, Car.DiskCarID, Color.ColorName, DiskCar.DiskCarName, Users.Login " +
+                        $"FROM Users INNER JOIN UserCar ON Users.UserID = UserCar.UserID INNER JOIN Car ON UserCar.CarID = Car.CarID" +
+                        $" INNER JOIN DiskCar ON Car.DiskCarID = DiskCar.DiskCarID " +
+                        $"INNER JOIN Color ON Car.ColorID = Color.ColorID WHERE (Users.Login = '{(string)Session["Login"]}')";
+                }
+
+            }
+        }
+
+        protected void ButtonAdd_Click(object sender, EventArgs e)
+        {
+            string carName = TextBoxCarName.Text;
+            string cost = TextBoxCost.Text;
+            string power = TextBoxPower.Text;
+            string consum = TextBoxConsum.Text;
+            string color = DropDownListColor.SelectedValue;
+            string diskCar = DropDownListDisk.SelectedValue;
+
+            string sqlExpression = "INSERT Cars.dbo.Car VALUES (@name, @cost, @power, @consumption, @color, @disk)";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.Parameters.AddWithValue("@name", carName);
+                command.Parameters.AddWithValue("@cost", cost);
+                command.Parameters.AddWithValue("@power", power);
+                command.Parameters.AddWithValue("@consumption", consum);
+                command.Parameters.AddWithValue("@color", color);
+                command.Parameters.AddWithValue("@disk", diskCar);
+
+                command.ExecuteNonQuery();
+            }
+
+            Response.Redirect(Request.RawUrl);
         }
 
         //protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)

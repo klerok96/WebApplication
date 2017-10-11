@@ -20,6 +20,7 @@
                 <Items>
                     <asp:MenuItem NavigateUrl="~/Main.aspx" Text="Главная" Value="Главная"></asp:MenuItem>
                     <asp:MenuItem Text="Пользователи" Value="Пользователи" NavigateUrl="~/DBView/Users.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="Машины" Value="Пользователи" NavigateUrl="~/DBView/Cars.aspx"></asp:MenuItem>
                 </Items>
             </asp:Menu>
             <br />

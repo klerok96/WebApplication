@@ -65,4 +65,34 @@
             <asp:Parameter Name="CarID" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <br />
+    Добавление<br />
+    CarName
+    <asp:TextBox ID="TextBoxCarName" runat="server"></asp:TextBox>
+    <br />
+    <br />
+    Cost
+    <asp:TextBox ID="TextBoxCost" runat="server"></asp:TextBox>
+    <br />
+    <br />
+    Power
+    <asp:TextBox ID="TextBoxPower" runat="server"></asp:TextBox>
+    <br />
+    <br />
+    Consumption
+    <asp:TextBox ID="TextBoxConsum" runat="server"></asp:TextBox>
+    <br />
+    <br />
+    Color
+    <asp:DropDownList ID="DropDownListColor" runat="server" DataSourceID="SqlDataSourceColors" DataTextField="ColorName" DataValueField="ColorID">
+    </asp:DropDownList>
+    <asp:SqlDataSource ID="SqlDataSourceColors" runat="server" ConnectionString="<%$ ConnectionStrings:CarsConnectionString %>" SelectCommand="SELECT * FROM [Color]"></asp:SqlDataSource>
+    <br />
+    <br />
+    DiskCar
+    <asp:DropDownList ID="DropDownListDisk" runat="server" DataSourceID="SqlDataSourceDisksCar" DataTextField="DiskCarName" DataValueField="DiskCarID">
+    </asp:DropDownList>
+    <asp:SqlDataSource ID="SqlDataSourceDisksCar" runat="server" ConnectionString="<%$ ConnectionStrings:CarsConnectionString %>" SelectCommand="SELECT * FROM [DiskCar]"></asp:SqlDataSource>
+    <br />
+    <asp:Button ID="ButtonAdd" runat="server" OnClick="ButtonAdd_Click" Text="Добавить" />
 </asp:Content>
