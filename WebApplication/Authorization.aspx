@@ -15,7 +15,6 @@
             Логин
             <asp:TextBox ID="Login" runat="server"></asp:TextBox>
             <br />
-            <br />
             Пароль <asp:TextBox ID="Password" runat="server"></asp:TextBox>
             <br />
             <br />
