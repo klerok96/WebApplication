@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Вход<br />
+            Test<br />
             <hr />
             <br />
             Логин
